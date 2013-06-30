@@ -1,0 +1,40 @@
+
+.form_label{
+	text-align:right;
+	padding-right:15px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	background-color:rgb(248, 250, 252);
+	font-size:12px;
+}
+.form_align{
+	text-align:center;
+	padding-right:15px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	background-color:rgb(248, 250, 252);
+	font-size:12px;
+}
+
+.table_th{
+	text-align:center;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-color:rgb(248, 250, 252);
+	border:1px solid blue;
+	font-family:arial,tahoma,verdana,sans-serif;
+	font-weight:bold;
+	font-size:12px;
+}
+
+a:link{
+	text-decoration: underline; 
+	margin-right:2px;
+	color: blue;
+}
+a:visited{
+  	text-decoration: underline;
+	color: purple;
+}
+a:HOVER {
+	text-decoration: underline;
+	color: orange;
+}

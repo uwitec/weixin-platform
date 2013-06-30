@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>weixin</artifactId>
+    <groupId>com.xuchunchun</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <artifactId>weixin-web</artifactId>
+  <packaging>war</packaging>
+  <name>web module of this project</name>
+  <description>微信平台的web部分</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.xuchunchun</groupId>
+  		<artifactId>weixin-base</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.xuchunchun</groupId>
+  		<artifactId>weixin-abframe</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.xuchunchun</groupId>
+  		<artifactId>weixin-biz</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.xuchunchun</groupId>
+  		<artifactId>weixin-trxn</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+</project>
