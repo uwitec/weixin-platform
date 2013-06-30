@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-2.5.xsd ">
+
+	<context:component-scan base-package="com.xuchunchun.*" />
+
+	<bean id="hibernateInterceptor" class="com.xuchunchun.base.interceptor.HibernateInterceptor"></bean>
+
+	<bean id="exceptionInterceptor" class="com.xuchunchun.base.interceptor.ExceptionInterceptor"></bean>
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+
+	<!-- 登录拦截器 -->
+	<bean id="loginInterceptor" class="com.xuchunchun.base.interceptor.LoginInterceptor" />
+	
+	<!-- 微信请求信息拦截处理 -->
+	<bean id="platformProcessInterceptor" class="com.xuchunchun.base.interceptor.PlatformProcessInterceptor" />
+
+	<bean id="context" class="com.xuchunchun.base.util.ApplicationContextUtil" />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		dependency-check="none">
+		<property name="fileEncoding" value="UTF-8" />
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/config/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${dataSource.driverClassName}"/>
+		<property name="jdbcUrl" value="${dataSource.url}"/>
+		<property name="initialPoolSize" value="${dataSource.initialPoolSize}" />  
+		<property name="minPoolSize" value="${dataSource.minPoolSize}" />  
+	    <property name="maxPoolSize" value="${dataSource.maxPoolSize}" />  
+	    <!-- 最大空闲时间，60表示60秒内无使用，则连接被丢弃，如果为0,表示始终保持连接 Default:0-->  
+	    <property name="maxIdleTime" value="${dataSource.maxIdleTime}" />  
+	    <!-- 当连接池中的连接耗尽时，c3p0一次同时获取的连接数 Default:3 -->  
+	    <property name="acquireIncrement" value="${dataSource.acquireIncrement}" />  
+	    <!-- 每60秒检查所有连接池中的空闲连接 Default:0-->  
+	    <property name="idleConnectionTestPeriod" value="${dataSource.idleConnectionTestPeriod}" />
+	    <property name="properties" ref="dataSourceProperties"/>
+	</bean>
+	
+	<bean id="dataSourceProperties" class="com.xuchunchun.base.db.PropertiesEncryptFactoryBean">   
+		<property name="properties">   
+			<props>     
+				<prop key="user">${dataSource.username}</prop>
+				<prop key="password">${dataSource.password}</prop>  
+			</props>   
+		</property>   
+	</bean>
+
+	
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="lobHandler" ref="lobHandler"/>
+		<property name="packagesToScan">
+			<list>
+				<value>com.xuchunchun.abframe.db.entity</value>
+				<value>com.xuchunchun.weixin.db.entity</value>
+			</list>
+		</property>
+		<property name="entityInterceptor">
+			<ref bean="hibernateInterceptor" />
+		</property>
+		<!--  <property name="configLocation" value="/WEB-INF/config/hibernate.cfg.xml" />-->
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${dataSource.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+				<!-- <prop key="hibernate.connection.release_mode">auto</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<!--配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!--配置事务管理的特性(隔离级别，传播特性...) -->
+	<tx:advice id="transAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="read*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="edit*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="insert*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="id*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception" />
+			<!-- <tx:method name="*" propagation="REQUIRED" read-only="true" rollback-for="Exception"/> -->
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置切面，把事务管理advice和切入点组到一起 -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.xuchunchun.weixin.platform.service.impl.*.*(..))"
+			id="managerpc" />
+		<aop:advisor advice-ref="transAdvice" pointcut-ref="managerpc"
+			order="1" />
+	</aop:config>
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.xuchunchun.abframe.service.impl.*.*(..))"
+			id="managerpcabframe" />
+		<aop:advisor advice-ref="transAdvice" pointcut-ref="managerpcabframe"
+			order="1" />
+	</aop:config>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>WEB-INF/resource/errorCode/errorCode</value>
+			</list>
+		</property>
+	</bean>
+</beans>

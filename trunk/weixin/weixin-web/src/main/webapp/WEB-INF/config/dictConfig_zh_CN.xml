@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dicts[
+<!ELEMENT dicts (dictType*)>
+<!ATTLIST dicts locale CDATA #IMPLIED>
+<!ELEMENT dictType (dictEntry+)>
+<!ATTLIST dictType dictTypeId ID #REQUIRED>
+<!ATTLIST dictType dictTypeName CDATA #REQUIRED>
+<!ATTLIST dictEntry dictId CDATA #REQUIRED>
+<!ATTLIST dictEntry dictName CDATA #REQUIRED>
+]>
+<dicts locale="zh_CN">
+	<dictType dictTypeId="YorN" dictTypeName="是否">
+		<dictEntry dictId="Y" dictName="是"/>
+		<dictEntry dictId="N" dictName="否"/>
+	</dictType>
+	<dictType dictTypeId="NorY" dictTypeName="是否">
+		<dictEntry dictId="N" dictName="否"/>
+		<dictEntry dictId="Y" dictName="是"/>
+	</dictType>
+	<dictType dictTypeId="cardNoOwnerType" dictTypeName="卡号归属方式">
+		<dictEntry dictId="A" dictName="单机构归属"/>
+		<dictEntry dictId="B" dictName="多机构归属"/>
+		<dictEntry dictId="C" dictName="继承式归属"/>
+	</dictType>
+	<dictType dictTypeId="controlMode" dictTypeName="控制方式">
+		<dictEntry dictId="L" dictName="独立"/>
+		<dictEntry dictId="S" dictName="从属"/>
+	</dictType>
+	<dictType dictTypeId="creditType" dictTypeName="征信类型">
+		<dictEntry dictId="A" dictName="人行征信"/>
+		<dictEntry dictId="B" dictName="公安资料核查"/>
+		<dictEntry dictId="C" dictName="人工征信"/>
+		<dictEntry dictId="D" dictName="其他征信 "/>
+	</dictType>
+	<dictType dictTypeId="creditMode" dictTypeName="征信方式">
+		<dictEntry dictId="A" dictName="自动征信"/>
+		<dictEntry dictId="C" dictName="资料核查"/>
+		<dictEntry dictId="M" dictName="手工征信"/>
+	</dictType>
+	<dictType dictTypeId="custTableCode" dictTypeName="客户信息表名">
+		<dictEntry dictId="APP" dictName="申请表"/>
+		<dictEntry dictId="CST" dictName="客户表"/>
+		<dictEntry dictId="CRD" dictName="卡表"/>
+		<dictEntry dictId="ACT" dictName="账户表 "/>
+	</dictType>
+	<dictType dictTypeId="resultShowType" dictTypeName="结果显示类型">
+		<dictEntry dictId="M" dictName="人工输入"/>
+		<dictEntry dictId="L" dictName="下拉显示 "/>
+	</dictType>
+	<dictType dictTypeId="ownerType" dictTypeName="所属机构方式">
+		<dictEntry dictId="A" dictName="分行"/>
+		<dictEntry dictId="B" dictName="分行组"/>
+	</dictType>
+	<dictType dictTypeId="preCardNoStatus" dictTypeName="前一卡号状态">
+		<dictEntry dictId="P" dictName="预锁定"/>
+	</dictType>
+	<dictType dictTypeId="cardNoStatus" dictTypeName="卡号状态">
+		<dictEntry dictId="N" dictName="正常"/>
+		<dictEntry dictId="U" dictName="已使用"/>
+		<dictEntry dictId="K" dictName="已申请，未使用"/>
+		<dictEntry dictId="S" dictName="已分配，未使用"/>
+		<dictEntry dictId="X" dictName="伪卡锁定"/>
+		<dictEntry dictId="P" dictName="预锁定"/>
+	</dictType>
+	<dictType dictTypeId="partMode" dictTypeName="组成方式">
+		<dictEntry dictId="A" dictName="固定内容"/>
+		<dictEntry dictId="B" dictName="从表数据抽取"/>
+	</dictType>
+	<dictType dictTypeId="fillType" dictTypeName="填充方式">
+		<dictEntry dictId="S" dictName="前填充"/>
+		<dictEntry dictId="E" dictName="后填充"/>
+	</dictType>
+	<dictType dictTypeId="limitProcessType" dictTypeName="额度处理方式">
+		<dictEntry dictId="A" dictName="以审核额度为准"/>
+		<dictEntry dictId="B" dictName="以目前客户额度为准"/>
+		<dictEntry dictId="C" dictName="以额度高者为准"/>
+		<dictEntry dictId="D" dictName="以额度低者为准"/>
+	</dictType>
+	<dictType dictTypeId="forceAuditInd" dictTypeName="强制审核指示">
+		<dictEntry dictId="Y" dictName="强制审核"/>
+		<dictEntry dictId="N" dictName="非强制审核"/>
+	</dictType>
+	<dictType dictTypeId="limitAdditionInd" dictTypeName="额度追加指示">
+		<dictEntry dictId="Y" dictName="允许"/>
+		<dictEntry dictId="N" dictName="不允许"/>
+	</dictType>
+	<dictType dictTypeId="limitPeriodType" dictTypeName="额度期限方式">
+		<dictEntry dictId="A" dictName="无期限"/>
+		<dictEntry dictId="B" dictName="自由期限"/>
+		<dictEntry dictId="C" dictName="固定期限，首次使用日期为开始日期"/>
+		<dictEntry dictId="D" dictName="固定期限，自定义开始日期"/>
+	</dictType>
+	<dictType dictTypeId="usedFlag" dictTypeName="当前使用标识">
+		<dictEntry dictId="Y" dictName="已启用"/>
+		<dictEntry dictId="N" dictName="未启用"/>
+	</dictType>
+	<dictType dictTypeId="startEmbossInd" dictTypeName="是否预制卡">
+		<dictEntry dictId="Y" dictName="预制卡"/>
+		<dictEntry dictId="N" dictName="非预制卡"/>
+	</dictType>
+	<dictType dictTypeId="rewardSmsFlag" dictTypeName="接受SMS信息指示">
+		<dictEntry dictId="Y" dictName="接受"/>
+		<dictEntry dictId="N" dictName="非接受"/>
+	</dictType>
+	<dictType dictTypeId="addressType" dictTypeName="地址类型">
+		<dictEntry dictId="C" dictName="单位地址"/>
+		<dictEntry dictId="H" dictName="家庭地址"/>
+	</dictType>
+	<dictType dictTypeId="basicSuppInd" dictTypeName="主副卡标识">
+		<dictEntry dictId="B" dictName="主卡"/>
+		<dictEntry dictId="S" dictName="副卡"/>
+	</dictType>
+	<dictType dictTypeId="sex" dictTypeName="性别">
+		<dictEntry dictId="M" dictName="男"/>
+		<dictEntry dictId="F" dictName="女"/>
+	</dictType>
+	
+	<!-- abframe -->
+	<dictType dictTypeId="listType" dictTypeName="名单类型">
+		<dictEntry dictId="W" dictName="白名单"/>
+		<dictEntry dictId="B" dictName="黑名单"/>
+	</dictType>
+	<dictType dictTypeId="authMode" dictTypeName="密码校验方式">
+		<dictEntry dictId="M" dictName="MD5"/>
+		<dictEntry dictId="S" dictName="SHA"/>
+	</dictType>
+	<dictType dictTypeId="userStatus" dictTypeName="用户状态">
+		<dictEntry dictId="U" dictName="新用户"/>
+		<dictEntry dictId="N" dictName="正常"/>
+		<dictEntry dictId="C" dictName="注销"/>
+		<dictEntry dictId="L" dictName="锁定"/>
+	</dictType>
+	<dictType dictTypeId="loginResult" dictTypeName="登录结果">
+		<dictEntry dictId="S" dictName="成功"/>
+		<dictEntry dictId="F" dictName="失败"/>
+	</dictType>
+	<dictType dictTypeId="reasonType" dictTypeName="失败原因类型">
+		<dictEntry dictId="A" dictName="密码校验失败"/>
+		<dictEntry dictId="B" dictName="MAC限制"/>
+		<dictEntry dictId="C" dictName="IP限制"/>
+		<dictEntry dictId="D" dictName="黑名单限制"/>
+	</dictType>
+	<dictType dictTypeId="excludeType" dictTypeName="例外类型">
+		<dictEntry dictId="A" dictName="显示"/>
+		<dictEntry dictId="B" dictName="不显示"/>
+	</dictType>
+	<dictType dictTypeId="formType" dictTypeName="申请表类型">
+		<dictEntry dictId="E" dictName="电子"/>
+		<dictEntry dictId="P" dictName="纸质"/>
+	</dictType>
+	
+	<dictType dictTypeId="andOrInd" dictTypeName="与或关系指示">
+		<dictEntry dictId="A" dictName="与"/>
+		<dictEntry dictId="O" dictName="或"/>
+	</dictType>
+	
+	<dictType dictTypeId="assignType" dictTypeName="分配方式">
+		<dictEntry dictId="A" dictName="分配给工作组主管"/>
+		<dictEntry dictId="B" dictName="平均分配给主管"/>
+		<dictEntry dictId="C" dictName="平均分配"/>
+		<dictEntry dictId="D" dictName="按条件分配"/>
+		<dictEntry dictId="E" dictName="分配给队列所有用户"/>
+	</dictType>
+	<dictType dictTypeId="assignTypeGrp" dictTypeName="分配方式">
+		<dictEntry dictId="A" dictName="分配给工作组主管"/>
+		<dictEntry dictId="B" dictName="平均分配"/>
+		<dictEntry dictId="C" dictName="分配到组"/>
+	</dictType>
+	
+	<dictType dictTypeId="resultType" dictTypeName="结果类型">
+		<dictEntry dictId="A" dictName="进件检查"/>
+		<dictEntry dictId="B" dictName="决策辅助"/>
+		<dictEntry dictId="C" dictName="进件类型"/>
+	</dictType>
+	
+	<dictType dictTypeId="showMode" dictTypeName="显示模式">
+		<dictEntry dictId="F" dictName="全屏显示"/>
+		<dictEntry dictId="S" dictName="半屏显示"/>
+	</dictType>
+	
+	<dictType dictTypeId="cardCollectionCd" dictTypeName="领卡方式">
+		<dictEntry dictId="B" dictName="分行领卡"/>
+		<dictEntry dictId="C" dictName="快递"/>
+		<dictEntry dictId="R" dictName="挂号信"/>
+	</dictType>
+	
+	<dictType dictTypeId="creditGuarrantee" dictTypeName="信用担保方式">
+		<dictEntry dictId="S" dictName="无"/>
+		<dictEntry dictId="F" dictName="定存"/>
+		<dictEntry dictId="G" dictName="担保人"/>
+	</dictType>
+	
+	<dictType dictTypeId="liquidAsset" dictTypeName="流动资产">
+		<dictEntry dictId="1" dictName="50,000"/>
+		<dictEntry dictId="2" dictName="50K-100K"/>
+		<dictEntry dictId="3" dictName="100K-500K"/>
+		<dictEntry dictId="4" dictName="500K-900K"/>
+		<dictEntry dictId="5" dictName="900K"/>
+	</dictType>
+	
+	<dictType dictTypeId="houseCondition" dictTypeName="住宅状况">
+		<dictEntry dictId="A" dictName="自有无按揭"/>
+		<dictEntry dictId="B" dictName="按揭住宅"/>
+		<dictEntry dictId="C" dictName="单位分配"/>
+		<dictEntry dictId="D" dictName="租房"/>
+		<dictEntry dictId="E" dictName="与父母同住"/>
+		<dictEntry dictId="F" dictName="自建"/>
+		<dictEntry dictId="O" dictName="其他"/>
+	</dictType>
+	
+	<dictType dictTypeId="hasBankProduct" dictTypeName="已有本行产品">
+		<dictEntry dictId="1" dictName="个人贷款"/>
+		<dictEntry dictId="2" dictName="公司贷款"/>
+		<dictEntry dictId="3" dictName="理财客户"/>
+		<dictEntry dictId="4" dictName="VIP客户"/>
+		<dictEntry dictId="5" dictName="大额储蓄(10万元以上)"/>
+		<dictEntry dictId="6" dictName="代发工资"/>
+		<dictEntry dictId="7" dictName="个人结算"/>
+		<dictEntry dictId="8" dictName="无"/>
+	</dictType>
+	
+	<dictType dictTypeId="othBankCrStatus" dictTypeName="在他行信贷状态">
+		<dictEntry dictId="A" dictName="已结清"/>
+		<dictEntry dictId="B" dictName="未结清"/>
+	</dictType>
+	
+	<dictType dictTypeId="currBankRel" dictTypeName="申请人与银行关系">
+		<dictEntry dictId="A" dictName="本行客户"/>
+		<dictEntry dictId="B" dictName="非本行客户"/>
+	</dictType>
+	
+	<dictType dictTypeId="cardDeliveryAddress" dictTypeName="卡片寄送地址">
+		<dictEntry dictId="H" dictName="家庭地址"/>
+		<dictEntry dictId="C" dictName="单位地址"/>
+	</dictType>
+	
+	<dictType dictTypeId="statMedia" dictTypeName="账单介质">
+		<dictEntry dictId="PN" dictName="纸质账单"/>
+		<dictEntry dictId="EN" dictName="电邮账单"/>
+		<dictEntry dictId="SN" dictName="短信账单"/>
+		<dictEntry dictId="PE" dictName="纸质和电邮账单"/>
+		<dictEntry dictId="PS" dictName="纸质和短信账单"/>
+		<dictEntry dictId="SE" dictName="短信和电邮账单"/>
+		<dictEntry dictId="99" dictName="以上三种都发送"/>
+	</dictType>
+	
+	<dictType dictTypeId="billAddress" dictTypeName="账单地址">
+		<dictEntry dictId="H" dictName="家庭地址"/>
+		<dictEntry dictId="C" dictName="单位地址"/>
+		<dictEntry dictId="O" dictName="其他地址"/>
+	</dictType>
+	
+	<dictType dictTypeId="currencyCode" dictTypeName="币种">
+		<dictEntry dictId="156" dictName="人民币"></dictEntry>
+		<dictEntry dictId="153" dictName="外币"></dictEntry>
+	</dictType>
+	
+	<dictType dictTypeId="pinVerificationInd" dictTypeName="密码校验指示">
+		<dictEntry dictId="B" dictName="全部校验"></dictEntry>
+		<dictEntry dictId="L" dictName="金额在一定限额以上校验"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="appTypeSelectType" dictTypeName="进件类型组">
+		<dictEntry dictId="M" dictName="人工选择"/>
+		<dictEntry dictId="A" dictName="自动选择"/>
+	</dictType>
+	<dictType dictTypeId="PASS" dictTypeName="是否通过">
+		<dictEntry dictId="Y" dictName="通过"/>
+		<dictEntry dictId="N" dictName="不通过"/>
+	</dictType>
+	<dictType dictTypeId="ownerTypeId" dictTypeName="属主类型">
+		<dictEntry dictId="CST" dictName="客户级"/>
+		<dictEntry dictId="CRD" dictName="卡级"/>
+		<dictEntry dictId="ACT" dictName="账户级"/>
+	</dictType>
+	<dictType dictTypeId="ownershipType" dictTypeName="拥有方式">
+		<dictEntry dictId="1" dictName="完全拥有"></dictEntry>
+		<dictEntry dictId="2" dictName="抵押贷款"></dictEntry>
+		<dictEntry dictId="3" dictName="租赁"></dictEntry>
+		<dictEntry dictId="4" dictName="与亲戚同住"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="docStatus" dictTypeName="文档状态">
+		<dictEntry dictId="U" dictName="已提交"></dictEntry>
+		<dictEntry dictId="S" dictName="未提交"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="upDownInd" dictTypeName="卡申请升降机指示">
+		<dictEntry dictId="U" dictName="同意升级"></dictEntry>
+		<dictEntry dictId="D" dictName="同意降级"></dictEntry>
+		<dictEntry dictId="N" dictName="不同意升降级"></dictEntry>
+		<dictEntry dictId="Y" dictName="同意升降级"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="statCombinationInd" dictTypeName="对账单合并指示">
+		<dictEntry dictId="C" dictName="客户级对账单"></dictEntry>
+		<dictEntry dictId="B" dictName="主卡级对账单"></dictEntry>
+		<dictEntry dictId="S" dictName="副卡级对账单"></dictEntry>
+		<dictEntry dictId="N" dictName="副卡无对账单"></dictEntry>
+	</dictType>
+	
+	<dictType dictTypeId="trxnAlertMedia" dictTypeName="交易提醒">
+		<dictEntry dictId="NN" dictName="不提醒"></dictEntry>
+		<dictEntry dictId="SN" dictName="短信提醒"></dictEntry>
+		<dictEntry dictId="EN" dictName="电邮提醒"></dictEntry>
+		<dictEntry dictId="SE" dictName="短信和电邮提醒"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="autoActInd" dictTypeName="自动动作指示">
+		<dictEntry dictId="S" dictName="直接跳过"></dictEntry>
+		<dictEntry dictId="C" dictName="进件检查"></dictEntry>
+		<dictEntry dictId="D" dictName="决策辅助"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="houseArea" dictTypeName="住宅面积">
+		<dictEntry dictId="1" dictName="80㎡以下"></dictEntry>
+		<dictEntry dictId="2" dictName="81~120㎡"></dictEntry>
+		<dictEntry dictId="3" dictName="121~180㎡"></dictEntry>
+		<dictEntry dictId="4" dictName="181㎡以上"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="isLongEffective" dictTypeName="长期有效">
+		<dictEntry dictId="Y" dictName="证件长期有效"></dictEntry>
+		<dictEntry dictId="N" dictName="证件有效期至"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="desicionInd" dictTypeName="长期有效">
+		<dictEntry dictId="A" dictName="核准"></dictEntry>
+		<dictEntry dictId="P" dictName="拒绝"></dictEntry>
+		<dictEntry dictId="U" dictName="未决定"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="listStatus" dictTypeName="名单状态">
+		<dictEntry dictId="N" dictName="正常"></dictEntry>
+		<dictEntry dictId="L" dictName="离开"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="customerListType" dictTypeName="关注客户名单类型">
+		<dictEntry dictId="B" dictName="黑名单"></dictEntry>
+		<dictEntry dictId="W" dictName="白名单"></dictEntry>
+		<dictEntry dictId="T" dictName="灰名单"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="localAutopayInd" dictTypeName="本外币自动还款指示">
+	   <dictEntry dictId="0" dictName="无自动还款请求" ></dictEntry>
+	   <dictEntry dictId="1" dictName="最低自动还款绑定请求"></dictEntry>
+	   <dictEntry dictId="2" dictName="全额自动还款绑定请求"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="memoType" dictTypeName="备忘类型">
+	   <dictEntry dictId="1" dictName="普通备忘"></dictEntry>
+	   <dictEntry dictId="2" dictName="进件流转备忘"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="documentStatus" dictTypeName="文档状态">
+	   <dictEntry dictId="U" dictName="已提交"></dictEntry>
+	   <dictEntry dictId="S" dictName="未提交"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="accountType" dictTypeName="银行账户类型">
+	   <dictEntry dictId="A" dictName="定期"></dictEntry>
+	   <dictEntry dictId="B" dictName="活期"></dictEntry>
+	</dictType>
+	<dictType dictTypeId="repaymentMethod" dictTypeName="还款方式">
+	   <dictEntry dictId="1" dictName="等额本息"/>
+	    <dictEntry dictId="2" dictName="等额本金"/>
+	    <dictEntry dictId="3" dictName="一次性还清本息"/>
+	    <dictEntry dictId="4" dictName="每月还息,多次还本"/>
+	    <dictEntry dictId="5" dictName="信用卡"/>
+	    <dictEntry dictId="6" dictName="其他"/>
+	</dictType>
+	<dictType dictTypeId="calLoyClassRull" dictTypeName="积分计算方式">
+		<dictEntry dictId="M" dictName="M-最高积分"/> 
+		<dictEntry dictId="A" dictName="A-积分相加"/>
+	</dictType>
+	<dictType dictTypeId="calLoyDecRull" dictTypeName="积分折算小数处理规则">
+		<dictEntry dictId="RU" dictName="RU-进位"/> 
+		<dictEntry dictId="RD" dictName="RD-去尾"/>
+		<dictEntry dictId="RO" dictName="RO-四舍五入"/>
+	</dictType>
+	<dictType dictTypeId="mergeInd" dictTypeName="积分合并指示">
+		<dictEntry dictId="C" dictName="C-客户级"/> 
+		<dictEntry dictId="P" dictName="P-卡级"/>
+	</dictType>
+	<dictType dictTypeId="suppMergeInd" dictTypeName="副卡积分合并指示">
+		<dictEntry dictId="Y" dictName="Y-合并到主卡"/> 
+		<dictEntry dictId="N" dictName="N-独立账户"/>
+	</dictType>
+	<dictType dictTypeId="stmtExpiryInd" dictTypeName="有效期计算指示">
+		<dictEntry dictId="Y" dictName="Y-按帐期计算"/> 
+		<dictEntry dictId="N" dictName="N-按日期计算"/>
+	</dictType>
+	<dictType dictTypeId="calLevel" dictTypeName="累积级别">
+		<dictEntry dictId="B" dictName="B-余额组成级"/> 
+		<dictEntry dictId="A" dictName="A-子账户级"/>
+	</dictType>
+	<dictType dictTypeId="confirmIndLevel" dictTypeName="是否需要复核">
+		<dictEntry dictId="Y" dictName="Y-复核"/> 
+		<dictEntry dictId="N" dictName="N-不复核"/>
+	</dictType>
+	<dictType dictTypeId="staffInd" dictTypeName="是否为公司职员">
+		<dictEntry dictId="Y" dictName="Y-是"/> 
+		<dictEntry dictId="N" dictName="N-否"/>
+	</dictType>
+	<dictType dictTypeId="vipInd" dictTypeName="是否为VIP">
+		<dictEntry dictId="Y" dictName="Y-是"/> 
+		<dictEntry dictId="N" dictName="N-否"/>
+	</dictType>
+	<dictType dictTypeId="debitCreditInd" dictTypeName="借贷方指示">
+		<dictEntry dictId="D" dictName="借方"/>
+		<dictEntry dictId="C" dictName="贷方"/>
+		<dictEntry dictId="B" dictName="双方"/>
+	</dictType>
+	<dictType dictTypeId="reversalCancelInd" dictTypeName="冲正/撤销交易指示">
+		<dictEntry dictId="R" dictName="冲正交易"/>
+		<dictEntry dictId="C" dictName="撤销交易"/>
+	</dictType>
+	<dictType dictTypeId="onUsInd" dictTypeName="ON US指示">
+		<dictEntry dictId="Y" dictName="ON-US"/>
+		<dictEntry dictId="N" dictName="Not ON-US"/>
+	</dictType>
+	<dictType dictTypeId="codeType" dictTypeName="代码类型">
+		<dictEntry dictId="00" dictName="00-状态代码"/>
+		<dictEntry dictId="01" dictName="01-监控代码"/>
+		<dictEntry dictId="02" dictName="02-冻结码"/>
+	</dictType>
+	<dictType dictTypeId="loyaltyCalDrc" dictTypeName="积分方向">
+		<dictEntry dictId="+" dictName="+ 正方向"/>
+		<dictEntry dictId="-" dictName="- 反方向"/>
+	</dictType>
+	<dictType dictTypeId="loyaltyCalInd" dictTypeName="积分计算指示">
+		<dictEntry dictId="Y" dictName="Y-逐级计算"/>
+		<dictEntry dictId="N" dictName="N-全额计算"/>
+	</dictType>
+	<dictType dictTypeId="currStatus" dictTypeName="当前状态">
+		<dictEntry dictId="O" dictName="O-可兑换"/>
+		<dictEntry dictId="C" dictName="C-不可兑换"/>
+	</dictType>
+	<dictType dictTypeId="luckydrawStatus" dictTypeName="当前状态">
+		<dictEntry dictId="O" dictName="O-未抽奖"/>
+		<dictEntry dictId="C" dictName="C-已抽奖"/>
+	</dictType>
+	<dictType dictTypeId="isSuppCntryCd" dictTypeName="供应商国家">
+		<dictEntry dictId="156" dictName="156-中国"/>
+		<dictEntry dictId="186" dictName="186-国外"/>
+		<dictEntry dictId="155" dictName="155-未知"/>
+	</dictType>
+	<dictType dictTypeId="loyalyuType" dictTypeName="积分计划类型">
+		<dictEntry dictId="T" dictName="T-交易类"/>
+		<dictEntry dictId="D" dictName="D-存款类"/>
+	</dictType>
+	<dictType dictTypeId="prfDatecomType" dictTypeName="PROFILE日期计算类型">
+		<dictEntry dictId="A" dictName="A-整个有效期内"/>
+		<dictEntry dictId="C" dictName="C-有效期内循环计算"/>
+	</dictType>
+	<dictType dictTypeId="cycleType" dictTypeName="循环计算类型">
+		<dictEntry dictId="D" dictName="D-天"/>
+		<dictEntry dictId="W" dictName="W-周"/>
+		<dictEntry dictId="M" dictName="M-月"/>
+		<dictEntry dictId="Y" dictName="Y-年"/>
+	</dictType>
+	<dictType dictTypeId="rankInd" dictTypeName="累积交易排名类型">
+		<dictEntry dictId="A" dictName="A-金额"/>
+		<dictEntry dictId="L" dictName="L-积分"/>
+		<dictEntry dictId="C" dictName="C-次数"/>
+	</dictType>
+	<dictType dictTypeId="compareType" dictTypeName="比较类型">
+		<dictEntry dictId="A" dictName="A-增加"/>
+		<dictEntry dictId="E" dictName="E-大于"/>
+		<dictEntry dictId="S" dictName="S-减少"/>
+	</dictType>
+	<dictType dictTypeId="valueType" dictTypeName="字段类型">
+		<dictEntry dictId="D" dictName="D-日期型"/>
+		<dictEntry dictId="S" dictName="S-字符型"/>
+		<dictEntry dictId="N" dictName="N-数字型"/>
+	</dictType>
+	<dictType dictTypeId="continueInd" dictTypeName="计算是否连续">
+		<dictEntry dictId="Y" dictName="Y-连续"/>
+		<dictEntry dictId="N" dictName="N-不连续"/>
+	</dictType>
+	<dictType dictTypeId="acmlLevel" dictTypeName="累积级别 ">
+		<dictEntry dictId="A" dictName="A-客户"/>
+		<dictEntry dictId="B" dictName="B-凭证"/>
+	</dictType>
+	<dictType dictTypeId="operator" dictTypeName="操作符 ">
+		<dictEntry dictId="&gt;=" dictName="&gt;="/>
+		<dictEntry dictId="&gt;" dictName="&gt;"/>
+		<dictEntry dictId="=" dictName="="/>
+		<dictEntry dictId="&lt;" dictName="&lt;"/>
+		<dictEntry dictId="&lt;=" dictName="&lt;="/>
+	</dictType>
+	<dictType dictTypeId="customerStatus" dictTypeName="客户状态">
+		<dictEntry dictId="N" dictName="N-正常 "/>
+		<dictEntry dictId="T" dictName="T-转移"/>
+		<dictEntry dictId="C" dictName="C-销户"/>
+	</dictType>
+	<dictType dictTypeId="maritalStatusId" dictTypeName="婚姻状态">
+		<dictEntry dictId="A" dictName="A-未婚 "/>
+		<dictEntry dictId="B" dictName="B-已婚"/>
+		<dictEntry dictId="C" dictName="C-离婚"/>
+	</dictType>
+	<dictType dictTypeId="loyaltyDrtStartInd" dictTypeName="积分有效期开始日期指示">
+		<dictEntry dictId="O" dictName="O-开卡日期 "/>
+		<dictEntry dictId="A" dictName="A-激活日期"/>
+		<dictEntry dictId="N" dictName="N-首个账单日"/>
+		<dictEntry dictId="D" dictName="D-交易当天"/>
+	</dictType>
+	<dictType dictTypeId="deliverTypeId" dictTypeName="礼品配送方式">
+		<dictEntry dictId="00" dictName="00-网点领取"/>
+		<dictEntry dictId="01" dictName="01-SMS"/>
+		<dictEntry dictId="03" dictName="03-EMAIL"/>
+		<dictEntry dictId="04" dictName="04-邮寄"/>
+		<dictEntry dictId="05" dictName="05-快递"/>
+		<dictEntry dictId="06" dictName="06-挂号信"/>
+		<dictEntry dictId="07" dictName="07-传真"/>
+	</dictType>
+	<dictType dictTypeId="rullTypeId" dictTypeName="规则类型">
+		<dictEntry dictId="C" dictName="字符型"/>
+		<dictEntry dictId="N" dictName="数字型"/>
+		<dictEntry dictId="D" dictName="日期"/>
+		<dictEntry dictId="N(XX,XX)" dictName="浮点型"/>
+	</dictType>
+	<dictType dictTypeId="roleType" dictTypeName="角色类型">
+		<dictEntry dictId="M" dictName="混合型"/>
+		<dictEntry dictId="T" dictName="科技型"/>
+		<dictEntry dictId="B" dictName="业务型"/>
+	</dictType>
+	<dictType dictTypeId="birthdayInd" dictTypeName="角色类型">
+		<dictEntry dictId="M" dictName="生日当月"/>
+		<dictEntry dictId="D" dictName="生日当天"/>
+		<dictEntry dictId="N" dictName="不检查"/>
+	</dictType>
+	<dictType dictTypeId="fstInd" dictTypeName="指示">
+		<dictEntry dictId="Y" dictName="检查"/>
+		<dictEntry dictId="N" dictName="不检查"/>
+	</dictType>
+	<dictType dictTypeId="custSexInd" dictTypeName="指示">
+		<dictEntry dictId="M" dictName="男"/>
+		<dictEntry dictId="F" dictName="女"/>
+		<dictEntry dictId="N" dictName="不检查"/>
+	</dictType>
+	<dictType dictTypeId="giftType" dictTypeName="礼品类型">
+		<dictEntry dictId="A" dictName="金额"/>
+		<dictEntry dictId="B" dictName="年费"/>
+		<dictEntry dictId="C" dictName="抽奖"/>
+		<dictEntry dictId="D" dictName="积分"/>
+	</dictType>
+	<dictType dictTypeId="redType" dictTypeName="自动兑换方式">
+		<dictEntry dictId="A" dictName="全额自动兑换"/>
+		<dictEntry dictId="B" dictName="指定数量兑换"/>
+	</dictType>
+		<dictType dictTypeId="statisticDateType" dictTypeName="报表统计类型">
+		<dictEntry dictId="D" dictName="日"/>
+		<dictEntry dictId="M" dictName="月"/>
+		<dictEntry dictId="J" dictName="季"/>
+		<dictEntry dictId="Y" dictName="年"/>
+	</dictType>
+</dicts>

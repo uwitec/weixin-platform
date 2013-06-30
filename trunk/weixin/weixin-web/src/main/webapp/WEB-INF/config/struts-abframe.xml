@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="exceptionInterceptor" class="exceptionInterceptor" />
+			<interceptor name="loginInterceptor" class="loginInterceptor" />
+			<interceptor-stack name="abframeDefaultStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="loginInterceptor"></interceptor-ref> 
+				<interceptor-ref name="exceptionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<global-results>
+			<result name="login" type="redirect">/index.jsp</result>
+			<result name="error">/WEB-INF/pages/error/error.jsp</result>
+		</global-results>
+		<!-- 跳转login -->
+		
+		<action name="tologin" class="forwardAction" method="forward">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/login.jsp</result>
+		</action>
+		<!--
+		<action name="logout" class="loginAction" method="logout">
+			<result name="logout">/login.jsp</result>
+		</action>
+		-->
+	</package>
+	<package name="login" extends="default" namespace="/login">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="index" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/public/index.jsp</result>
+        </action>
+        <action name="login" class="loginAction" method="login">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="loginfail">/login.jsp
+            </result>
+            <result name="nuser">/WEB-INF/pages/public/index.jsp</result>
+            <!--<result name="nuser" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="namespace">/login</param>
+            </result>
+            --><result name="uuser" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="namespace">/login</param>
+            </result>
+        </action>
+        <!-- 首次登录修改密码 -->
+        <action name="firstPasswordChange" class="loginAction" method="firstPasswordChange"/>
+        <!-- 退出 -->
+        <action name="logout" class="loginAction" method="logout">
+            <result name="success">/login.jsp</result>
+        </action>
+        <!-- 加载树 进入index页面就把数据带过去了
+        <action name="userListTreeForm" class="loginAction" method="userListTreeForm"/> -->
+        <action name="welcomeMenu" class="loginAction" method="welcomeMenu">
+            <result name="success">/welcome.jsp</result>
+        </action>
+    </package>
+    <!-- 角色管理beginn -->
+	<package name="aclRole" extends="default" namespace="/aclRole">
+		<default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+		<action name="toquery" class="forwardAction" method="forward">
+			<result name="success">/WEB-INF/pages/abframe/aclrole/aclrole.jsp</result>
+		</action>
+		<action name="toadd" class="forwardAction" method="forward">
+			<result name="success">/WEB-INF/pages/abframe/aclrole/aclroleDetail.jsp</result>
+		</action>
+		<action name="list" class="aclRoleAction" method="list"/>
+		<action name="add" class="aclRoleAction" method="add"/>
+		<action name="delete" class="aclRoleAction" method="delete"></action>
+		<action name="update" class="aclRoleAction" method="update"></action>
+		<action name="detail" class="aclRoleAction" method="detail">
+			<result name="success">/WEB-INF/pages/abframe/aclrole/aclroleDetail.jsp</result>
+		</action>
+        <!-- function -->
+        <action name="aclrolefunction" class="aclRoleAction" method="aclrolefunction">
+            <result name="success">/WEB-INF/pages/abframe/aclrole/aclrolefunction.jsp</result>
+        </action>
+        <action name="listfunction" class="aclRoleAction" method="functionlist"/>
+        <action name="listfunctionlistAll" class="aclRoleAction" method="functionlistAll"/>
+        <action name="addfunction" class="aclRoleAction" method="addfunc"/>
+        <action name="deletefunction" class="aclRoleAction" method="deletefunc"/>
+        <!-- menu -->
+        <action name="aclrolemenu" class="aclRoleAction" method="aclrolemenu">
+            <result name="success">/WEB-INF/pages/abframe/aclrole/aclrolemenu.jsp</result>
+        </action>
+        <action name="loadroletree" class="aclRoleAction" method="loadroletree"/>
+        <action name="saveAclMenu" class="aclRoleAction" method="saverolemenu"/>
+        <!-- user -->
+        <action name="aclroleuser" class="aclRoleAction" method="aclroleuser">
+            <result name="success">/WEB-INF/pages/abframe/aclrole/aclroleuser.jsp</result>
+        </action>
+        <action name="userList" class="aclRoleAction" method="userList"/>
+        <action name="userListAll" class="aclRoleAction" method="userListAll"/>
+        <action name="addUser" class="aclRoleAction" method="addUser"/>
+        <action name="deleteUser" class="aclRoleAction" method="deleteUser"/>
+        <!-- shortcut -->
+        <action name="toshortcut" class="forwardAction" method="forward">
+			<result name="success">/WEB-INF/pages/abframe/aclrole/aclroleshortcut.jsp</result>
+		</action>
+		<action name="loadUserShortcut" class="aclRoleAction" method="loadUserShortcut"/>
+		<action name="saveAclUsershortcut" class="aclRoleAction" method="saveAclUsershortcut"/>
+	</package>
+	<!-- 菜单管理begin -->
+    <package name="aclMenuTree" extends="default" namespace="/aclMenuTree">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclmenutree/aclmenutree.jsp</result>
+        </action>
+        <action name="loadtree" class="aclMenuTreeAction" method="loadtree" />
+        <action name="loadparenttree" class="aclMenuTreeAction" method="loadparenttree" />
+        <action name="gettable" class="aclMenuTreeAction" method="gettable" />
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclmenutree/aclmenutreeDetail.jsp</result>
+        </action>
+        <action name="toaddtopmenu" class="aclMenuTreeAction" method="toaddtopmenu">
+            <result name="success">/WEB-INF/pages/abframe/aclmenutree/aclmenutreeDetail.jsp</result>
+        </action>
+        <action name="detail" class="aclMenuTreeAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclmenutree/aclmenutreeDetail.jsp</result>
+        </action>
+        <action name="add" class="aclMenuTreeAction" method="add">
+            <!--<result name="success">/WEB-INF/pages/abframe/aclmenutree/aclmenutreeDetail.jsp</result>
+        --></action>
+        <action name="deletemenutree" class="aclMenuTreeAction" method="delete" />
+        <action name="update" class="aclMenuTreeAction" method="update">
+            <!--<result name="success">/WEB-INF/pages/abframe/aclmenutree/aclmenutreeDetail.jsp</result>
+        --></action>
+    </package>
+    <!-- 系统参数begin -->
+    <package name="aclSysparameterAction" extends="default" namespace="/aclSysparameterAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclsysparameter/aclsysparameter.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclsysparameter/aclsysparameterDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclSysparameterAction" method="querylist" />
+        <action name="add" class="aclSysparameterAction" method="add">
+           <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclSysparameterAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclsysparameter/aclsysparameterDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclSysparameterAction" method="delete">
+         <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+         </action>
+        <action name="update" class="aclSysparameterAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 功能begin -->
+    <package name="aclFunction" extends="default" namespace="/aclFunction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclfunction/aclfunction.jsp</result>
+        </action>
+        <action name="functionlist" class="aclFunctionAction" method="functionList" />
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclfunction/aclfunctionDetail.jsp</result>
+        </action>
+        <action name="add" class="aclFunctionAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclFunctionAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclfunction/aclfunctionDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclFunctionAction" method="delete">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="aclFunctionAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 登陆策略begin -->
+    <package name="AclLoginstrategyAction" extends="default" namespace="/AclLoginstrategyAction">
+         <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclloginstrategy/aclloginstrategy.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclloginstrategy/aclloginstrategyDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclLoginstrategyAction" method="querylist" />
+        <action name="add" class="aclLoginstrategyAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclLoginstrategyAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclloginstrategy/aclloginstrategyDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclLoginstrategyAction" method="delete">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="aclLoginstrategyAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 登陆策略end -->
+    <!-- 子系统begin -->
+    <package name="aclChildsystemAction" extends="default" namespace="/aclChildsystemAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclChildsystem/aclchildsystem.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclChildsystem/aclchildsystemDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclChildsystemAction" method="querylist" />
+        <action name="add" class="aclChildsystemAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclChildsystemAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclChildsystem/aclchildsystemDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclChildsystemAction" method="delete">
+          <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+          </action>
+        <action name="update" class="aclChildsystemAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 子系统end -->
+    
+     <!-- 例外begin -->
+    <package name="aclExcludeAction" extends="default" namespace="/aclExcludeAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclexclude/aclexclude.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclexclude/aclexcludeDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclExcludeAction" method="querylist" />
+        <action name="add" class="aclExcludeAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclExcludeAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclexclude/aclexcludeDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclExcludeAction" method="delete">
+          <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+          </action>
+        <action name="update" class="aclExcludeAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 例外end -->
+    
+    
+    <!-- 功能例外begin -->
+    <package name="aclFuncexcludeAction" extends="default" namespace="/aclFuncexcludeAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclfuncexclude/aclfuncexclude.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclfuncexclude/aclfuncexcludeDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclFuncexcludeAction" method="querylist" />
+        <action name="add" class="aclFuncexcludeAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclFuncexcludeAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclfuncexclude/aclfuncexcludeDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclFuncexcludeAction" method="delete" >
+         <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="aclFuncexcludeAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 功能例外end -->
+    
+    <!-- 系统员工表begin -->
+    <package name="kenEmployeeAction" extends="default" namespace="/kenEmployeeAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/organization/kenemployee/kenemployee.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/organization/kenemployee/kenemployeeDetail.jsp</result>
+        </action>
+        <action name="querylist" class="kenEmployeeAction" method="querylist" ></action>
+        <action name="add" class="kenEmployeeAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="kenEmployeeAction" method="detail">
+            <result name="success">/WEB-INF/pages/organization/kenemployee/kenemployeeDetail.jsp</result>
+        </action>
+        <action name="delete" class="kenEmployeeAction" method="delete" >
+           <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="kenEmployeeAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!-- 系统员工表end -->
+    
+        <!-- 登陆日志表begin -->
+    <package name="aclLoginmemoAction" extends="default" namespace="/aclLoginmemoAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclloginmemo/aclloginmemo.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/aclloginmemo/aclloginmemoDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclLoginmemoAction" method="querylist" />
+        <action name="add" class="aclLoginmemoAction" method="add">
+           <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="aclLoginmemoAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/aclloginmemo/aclloginmemoDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclLoginmemoAction" method="delete">
+        <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="aclLoginmemoAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!--  登陆日志表end -->
+    
+    <!-- 用户begin -->
+    <package name="aclUserAction" extends="default" namespace="/aclUserAction">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluser.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserDetail.jsp</result>
+        </action>
+        <action name="querylist" class="aclUserAction" method="querylist" />
+        <action name="add" class="aclUserAction" method="add">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserDetail.jsp</result>
+        </action>
+        <action name="detail" class="aclUserAction" method="detail">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserDetail.jsp</result>
+        </action>
+        <action name="delete" class="aclUserAction" method="delete" />
+        <action name="update" class="aclUserAction" method="update">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserDetail.jsp</result>
+        </action>
+        <action name="lockuser" class="aclUserAction" method="lockuser"/>
+        <action name="unlockuser" class="aclUserAction" method="unlockuser"/>
+        <action name="resetpassword" class="aclUserAction" method="resetpassword"/>
+        <action name="forceLogout" class="aclUserAction" method="forceLogout"/>
+        <!-- role -->
+        <action name="roleforword" class="aclUserAction" method="tabforword">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserrole.jsp</result>
+        </action>
+        <action name="rolelist" class="aclUserAction" method="rolelist"/>
+        <action name="addrole" class="aclUserAction" method="addrole"/>
+        <action name="deleterole" class="aclUserAction" method="deleterole"/>
+        <!-- log -->
+        <action name="logforword" class="aclUserAction" method="tabforword">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserlog.jsp</result>
+        </action>
+        <action name="loglist" class="aclUserAction" method="loglist"/>
+        <!-- ip -->
+        <action name="ipforword" class="aclUserAction" method="tabforword">
+            <result name="success">/WEB-INF/pages/abframe/acluser/acluserip.jsp</result>
+        </action>
+        <action name="iplist" class="aclUserAction" method="iplist"/>
+        <action name="addip" class="aclUserAction" method="addip"/>
+        <action name="deleteip" class="aclUserAction" method="deleteip"/>
+        <!-- mac -->
+        <action name="macforword" class="aclUserAction" method="tabforword">
+            <result name="success">/WEB-INF/pages/abframe/acluser/aclusermac.jsp</result>
+        </action>
+        <action name="maclist" class="aclUserAction" method="maclist"/>
+        <action name="addmac" class="aclUserAction" method="addmac"/>
+        <action name="deletemac" class="aclUserAction" method="deletemac"/>
+        <!-- changepassword -->
+        <action name="tochangepassword" class="aclUserAction" method="tochangepassword">
+            <result name="">/WEB-INF/pages/public/passwordchange.jsp</result>
+        </action>
+        <action name="changepassword" class="aclUserAction" method="changepassword"/>
+    </package>
+    <!-- 用户end -->
+    <!-- lookup弹出框 -->
+    <package name="abframeLookup" extends="default" namespace="/abframeLookup">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="functionto" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/public/lookup/functionLookup.jsp</result>
+        </action>
+        <action name="employeeto" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/public/lookup/employeeLookup.jsp</result>
+        </action>
+        <action name="functionlist" class="abframeLookup" method="functionList"/>
+        <action name="employeelist" class="abframeLookup" method="employeeList"/>
+    </package>
+     <!-- 分行机构配置begin -->
+    <package name="kenBankbranch" extends="default" namespace="/kenBankbranch">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/organization/kenbankbranch/kenbankbranch.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/organization/kenbankbranch/kenbankbranchDetail.jsp</result>
+        </action>
+        <action name="querylist" class="kenBankbranchAction" method="querylist" />
+        <action name="add" class="kenBankbranchAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="kenBankbranchAction" method="detail">
+            <result name="success">/WEB-INF/pages/organization/kenbankbranch/kenbankbranchDetail.jsp</result>
+        </action>
+        <action name="delete" class="kenBankbranchAction" method="delete">
+             <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="kenBankbranchAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!--  分行机构配置end -->
+    
+    <!-- 员工所辖分行begin -->
+    <package name="kenEmpbranch" extends="default" namespace="/kenEmpbranch">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/organization/kenempbranch/kenempbranch.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/organization/kenempbranch/kenempbranchDetail.jsp</result>
+        </action>
+        <action name="querylist" class="kenEmpbranchAction" method="querylist" />
+        <action name="add" class="kenEmpbranchAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="kenEmpbranchAction" method="detail">
+            <result name="success">/WEB-INF/pages/organization/kenempbranch/kenempbranchDetail.jsp</result>
+        </action>
+        <action name="delete" class="kenEmpbranchAction" method="delete">
+          <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="kenEmpbranchAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!--  员工所辖分行end -->
+    
+    
+    
+</struts>    

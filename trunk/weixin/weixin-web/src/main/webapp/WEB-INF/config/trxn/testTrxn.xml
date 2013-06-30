@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trxn>
+	<trxnName>test</trxnName>
+	<trxnDesc>这是一个测试交易</trxnDesc>
+	<requestFields>
+		<preloads>
+			<preload multy="false">[S]test1</preload>
+			<preload multy="false">[S]test2</preload>
+		</preloads>
+		<field name="field1" desc="field no1" multy="false" checkExpr="\S*" type="S" isNull="false" fillValue="[S]test1" memoFiled="test"></field>
+		<field name="field2" desc="field no2" multy="false" checkExpr="\d+(.?\d+)?" type="B" isNull="false" fillValue="[S]test1" memoFiled="test"></field>
+		<field name="field3" desc="field no3" multy="false" checkExpr="\d+" type="L" isNull="false"  memoFiled="test"></field>
+		<field name="field4" desc="field no4" multy="true" fillValue="[S]test3" memoFiled="test" countField="field3">
+			<field name="field41" desc="field no41" multy="false" checkExpr="\S*" type="S" isNull="false" fillValue="[C]sex_id"></field>
+			<field name="field42" desc="field no42" multy="false" checkExpr="\d+" type="L" isNull="false" fillValue="[C]age"></field>	
+			<field name="field43" desc="field no43" multy="false" checkExpr="\S*" type="S" isNull="false" fillValue="uu"></field>			
+		</field>
+		<field name="field5" desc="field no5" multy="false" type="D" checkExpr="[\d|:]+" dateFormat="yyyyMMdd hh:mm:ss" isNull="false" fillValue="[S]test2" memoFiled="test"></field>
+		
+	</requestFields>
+	<responseFields>
+		<field name="field1" desc="field no1" multy="false" checkExpr="\S*" type="S" isNull="false" memoFiled="test"></field>
+		<field name="field2" desc="field no2" multy="false" checkExpr=".*" type="S" isNull="false" memoFiled="test"></field>
+		<field name="field3" desc="field no3" multy="false" checkExpr="\s*\d+\s*" type="L" isNull="false" memoFiled="test"></field>
+		<field name="field4" desc="field no4" multy="true" countField="field3" memoFiled="test">
+			<field name="field41" desc="field no41" multy="false" checkExpr=".*" type="S" isNull="false"></field>
+			<field name="field42" desc="field no42" multy="false" checkExpr="\s*\d+(.?\d+)?\s*" type="B" isNull="false"></field>
+			<field name="field43" desc="field no43" multy="false" checkExpr="\s*\d+\s*" type="L" isNull="false"></field>			
+		</field>
+		<keyFields>
+			<keyField name="field1" >00</keyField>
+		</keyFields>
+		<reasonField>field2</reasonField>
+	</responseFields>
+</trxn>

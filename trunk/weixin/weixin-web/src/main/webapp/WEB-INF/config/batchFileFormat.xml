@@ -1,0 +1,51 @@
+<files>
+	<!-- 按照实际批量文件配置，每个批量文件对应相应的配置
+		 文件ID在程序内需要调用，所以不能重复，名称只是做显示
+		 文件路径为相对路径，从该应用的根目录开始，以“/”开头,以*号代替任意字符
+		 文件类型L：表示以长度分割 S：表示以分隔符分割
+	-->
+	<!--
+	<file id="test" name="test" path="/batch/test.txt" type="S" sp=",">
+		 每个批量文件分为若干个域，每个域对应一个field配置，各个属性说明如下
+			index      :域序号，序号从0开始,代表该域在所有域中的的前后位置
+			filed_type :域类型，
+				F:固定长度
+				D:动态长度。如果是动态长度，代表着该域的前N位为该域的长度数据
+			checkExpr  :域检查方式，以正则表达式的形式表现，程序以正则表达式对该域进行校验
+			length     :如果该域为固定长度，该字段表示该字段的长度
+			dataType   :该域对应的java对象 ，有以下几种选择：
+				S:字符型对象，java对象为java.lang.String 
+     			N:无小数点数字，java对象为java.lang.Integer 
+     			F:有小数点数字，java对象为java.lang.Double 
+     			A:金额对象，java对象为java.math.BigDecimal 
+     			D:日期对象，java对象为java.sql.Date 
+			headLength :如果该域为动态长度，该字段表示该域头的长度
+			name       :该域名称,不做处理，只为显示作用
+			dateFormat :如果该域为日期，这里表示日期格式
+			isNull     :是否允许为空
+		
+		<field index="0" name="ddd" fieldType="F" checkExpr="[\s\S]*" length="3" dataType="S" headLength="" dateFormat="" isNull="Y" />
+		<field index="1" name="ffffff" fieldType="F" checkExpr="[0-9]*" length="13" dataType="S" headLength="" dateFormat="" isNull="Y"/>
+	</file>
+	-->
+<!-- 	
+	<file id="batchRegister" name="batchRegister" path="/batchFile/*.csv" type="S" sp=",">
+		<field index="0" name="phoneNo" checkExpr="\d+" dataType="S" isNull="Y" />
+		<field index="1" name="email" checkExpr="\w+@\w+.\w+" dataType="S" isNull="Y" />
+		<field index="2" name="giftedBp" checkExpr="\d+(.?\d+)?" dataType="F" isNull="N" />
+		<field index="3" name="merchantName" checkExpr="\S*" dataType="S" isNull="Y" />
+		<field index="4" name="note" checkExpr="\S*" dataType="S" isNull="Y" />
+	</file>
+ -->
+	<file id="batchLimitAdjust" name="batchLimitAdjust" path="/batchFile/batchLimitAdjust*.csv" type="S" sp=",">
+		<field index="0" name="customerId" checkExpr="\d+" dataType="S" isNull="Y" />
+		<field index="1" name="idtypeId" checkExpr="\S*" dataType="S" isNull="N" />
+		<field index="2" name="idNo" checkExpr="\S*" dataType="S" isNull="N" />
+		<field index="3" name="cardNo" checkExpr="\d+" dataType="S" isNull="N" />
+		<field index="4" name="limitTypeId" checkExpr="\S*" dataType="S" isNull="N" />
+		<field index="5" name="requestLimit" checkExpr="\d+" dataType="F" isNull="N" />
+		<field index="6" name="ownerTypeId" checkExpr="\S*" dataType="S" isNull="N" />
+		<field index="7" name="appTypeGrpId" checkExpr="\S*" dataType="S" isNull="N" />
+		<!-- <field index="8" name="memo" checkExpr="\S*" dataType="S" isNull="Y" /> -->
+	</file>
+</files>
