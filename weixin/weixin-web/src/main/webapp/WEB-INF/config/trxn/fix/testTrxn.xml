@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol>
+	<trxnName>test</trxnName>
+	<proType>fix</proType>
+	<requestFields>
+		<field name="field1" seq="1" type="fix" headLength="2" headFillType="L" headFillChar="0" length="10" contentFillType="L" contentFillChar=" " location="" ></field>
+		<field name="field2" seq="2" type="fix" headLength="2" headFillType="L" headFillChar="0" length="10" contentFillType="L" contentFillChar=" " location="" ></field>
+		<field name="field3" seq="3" type="dyn" headLength="2" headFillType="L" headFillChar="0" length="5" contentFillType="L" contentFillChar=" " location="" ></field>
+		<field name="field4" seq="4">
+			<field name="field41" seq="1" type="fix" headLength="2" headFillType="L" headFillChar="0" length="8" contentFillType="L" contentFillChar=" " location="" ></field>
+			<field name="field42" seq="2" type="fix" headLength="2" headFillType="L" headFillChar="0" length="6" contentFillType="L" contentFillChar=" " location="" ></field>
+			<field name="field43" seq="3" type="fix" headLength="2" headFillType="L" headFillChar="0" length="5" contentFillType="L" contentFillChar=" " location="" ></field>			
+		</field>
+		<field name="field5" seq="5" type="fix" headLength="2" headFillType="L" headFillChar="0" length="3" contentFillType="L" contentFillChar=" " location="" ></field>
+		
+	</requestFields>
+	<responseFields>
+		<field name="field1" seq="1" type="fix" headLength="2" headFillType="L" headFillChar="0" length="2" contentFillType="L" contentFillChar=" " location="" ></field>
+		<field name="field2" seq="2" type="dyn" headLength="2" headFillType="L" headFillChar="0" length="3" contentFillType="L" contentFillChar=" " location="" ></field>
+		<field name="field3" seq="3" type="fix" headLength="2" headFillType="L" headFillChar="0" length="2" contentFillType="L" contentFillChar=" " location="" ></field>
+		<field name="field4" seq="4">
+			<field name="field41" seq="1" type="fix" headLength="2" headFillType="L" headFillChar="0" length="8" contentFillType="L" contentFillChar=" " location="" ></field>
+			<field name="field42" seq="2" type="fix" headLength="2" headFillType="L" headFillChar="0" length="7" contentFillType="L" contentFillChar=" " location="" ></field>
+			<field name="field43" seq="3" type="fix" headLength="2" headFillType="L" headFillChar="0" length="6" contentFillType="L" contentFillChar=" " location="" ></field>			
+		</field>
+	</responseFields>
+</protocol>

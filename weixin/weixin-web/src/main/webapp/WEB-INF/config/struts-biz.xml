@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <!--凭证类别begin -->
+    <package name="rlpVoucherClass" extends="default" namespace="/rlpVoucherClass">
+        <default-interceptor-ref name="abframeDefaultStack"></default-interceptor-ref>
+        <action name="toquery" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/rlp/RlpPlanParameters/RlpVocherPara/rlpvoucherclass/rlpvoucherclass.jsp</result>
+        </action>
+        <action name="toadd" class="forwardAction" method="forward">
+            <result name="success">/WEB-INF/pages/rlp/RlpPlanParameters/RlpVocherPara/rlpvoucherclass/rlpvoucherclassDetail.jsp</result>
+        </action>
+        <action name="querylist" class="rlpVoucherClassAction" method="querylist" ></action>
+        <action name="add" class="rlpVoucherClassAction" method="add">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="detail" class="rlpVoucherClassAction" method="detail">
+            <result name="success">/WEB-INF/pages/rlp/RlpPlanParameters/RlpVocherPara/rlpvoucherclass/rlpvoucherclassDetail.jsp</result>
+        </action>
+        <action name="delete" class="rlpVoucherClassAction" method="delete" >
+           <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+        <action name="update" class="rlpVoucherClassAction" method="update">
+            <result name="success">/WEB-INF/pages/public/ajax/ajaxdone.jsp</result>
+        </action>
+    </package>
+    <!--凭证类别end -->
+    
+    
+</struts>    
