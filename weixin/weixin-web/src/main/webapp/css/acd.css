@@ -1,0 +1,92 @@
+
+.form_label{
+	text-align:right;
+	font-family:arial,tahoma,verdana,sans-serif;
+	background-color:rgb(248, 250, 252);
+	font-size:12px;
+}
+.table_label{
+	text-align:center;
+	font-family:arial,tahoma,verdana,sans-serif;
+	background-color:rgb(248, 250, 252);
+	font-size:12px;
+}
+.form_align{
+	text-align:center;
+	padding-right:15px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	background-color:rgb(248, 250, 252);
+	font-size:12px;
+	height: 20px;
+}
+
+.table_th{
+	text-align:center;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-color:rgb(248, 250, 252);
+	border:1px solid #ADD8E6;
+	font-family:arial,tahoma,verdana,sans-serif;
+	font-weight:bold;
+	font-size:12px;
+}
+
+a:link{
+	text-decoration: underline; 
+	margin-right:2px;
+	color: blue;
+}
+a:visited{
+  	text-decoration: underline;
+	color: purple;
+}
+a:HOVER {
+	text-decoration: underline;
+	color: orange;
+}
+
+.form_table {
+	text-align:center;
+	font-family: "΢���ź�", "����",background:#E2F0FF Arial, sans-serif; 
+	font-size:12px;
+	padding-left1:30px;
+}
+
+#search{
+	width:100%;
+	margin-bottom:10px;
+	 border:1px solid lightblue;
+}
+
+.showhead{
+	text-align:left;
+	font-size:14px;
+	background-color:#E3EDF9;
+	font-weight: bold;	
+}
+
+#subButton,#startworkFlow{
+	display: block;
+	border: solid 1px #A3C0E8;
+	width: 50px;
+	height: 20px;
+	overflow: hidden;
+	line-height: 20px;
+	background: #E0EDFF url(../images/controls/button-bg.gif) repeat-x center;
+	text-align: center;
+	color: #2C4D79;
+	text-decoration: none;
+	cursor: pointer;	
+}
+
+.required{
+	background:url(../images/star.png);
+	background-position:right center;
+	background-repeat:no-repeat
+}
+
+.inputtext{
+	text-align: left;
+	width: 280px;
+	border-color: red;
+}
