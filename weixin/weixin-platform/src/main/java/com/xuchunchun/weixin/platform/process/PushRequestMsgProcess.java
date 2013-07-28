@@ -105,7 +105,7 @@ public class PushRequestMsgProcess {
 		
 	}
 	
-	private static Class getType(String msgType){
+	private static Class<? extends PushMsg> getType(String msgType){
 		switch(EnumType.valueOf(PushMsg.requestMsgType.class, msgType)){
 			case text:
 				return TextMsgRequest.class;

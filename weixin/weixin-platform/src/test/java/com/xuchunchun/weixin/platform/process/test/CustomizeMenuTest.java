@@ -27,7 +27,7 @@ public class CustomizeMenuTest {
 		PlatformParaFactory.getInstance().init();
 	}
 	
-	@Test
+	//@Test
 	public void testCreateMenu() throws Exception {
 		String s = "{\"button\":[{\"type\":\"click\",\"name\":\"今日歌曲\",\"key\":\"V1001_TODAY_MUSIC\"},{\"type\":\"click\",\"name\":\"歌手简介\",\"key\":\"V1001_TODAY_SINGER\"},{\"name\":\"菜单\",\"sub_button\":[{\"type\":\"click\",\"name\":\"hello word\",\"key\":\"V1001_HELLO_WORLD\"},{\"type\":\"click\",\"name\":\"赞一下我们\",\"key\":\"V1001_GOOD\"}]}]}";
 
