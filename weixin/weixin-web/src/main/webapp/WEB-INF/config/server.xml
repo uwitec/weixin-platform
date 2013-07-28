@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<servers>
+	<server>
+		<name>test</name>
+		<desc>this a test client</desc>
+		<port>20001</port>
+		<timeout>5000</timeout>
+		<encoding>UTF-8</encoding>
+		<longConn>false</longConn>
+		<linger>2</linger>
+		<sendBufferSize>32</sendBufferSize>
+		<receiveBufferSize>32</receiveBufferSize>
+		<maxReConn>5</maxReConn>
+		<protocolClass>com.xuchunchun.trxn.protocol.FixLengthProtocol</protocolClass>
+		<protocolConfig>/WEB-INF/config/trxn/fix</protocolConfig>
+	</server>
+	
+</servers>
